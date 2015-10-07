@@ -8,7 +8,8 @@
 
 import Foundation
 
-let prompt = "Enter an expression separated by returns:"
+let prompt1 = "Enter an expression separated by returns:"
+let prompt2 = "Enter a multi-operand expression separated by spaces, followed by 'count', 'avg', or 'fact'"
 
 // Function for standard input reading
 func input() -> String {
@@ -25,25 +26,34 @@ func convert(incoming:String) -> Int {
     // return NSFormatter().numberFromString(incoming)!.integerValue
 }
 
-print(prompt)
-let var1 = convert(input())
-let operation = input()
-let var2 = convert(input())
+print("Would you like a simple calculator (1), or a multi-operand (2)?")
+let userInput = convert(input())
 
-switch operation {
-    case "+":
+if userInput == 1 {
+    print(prompt1)
+    let var1 = convert(input())
+    let operation = input()
+    let var2 = convert(input())
+    switch operation {
+    case "+", "add":
         print("Result: \(var1 + var2)")
-    case "-":
+    case "-", "sub":
         print("Result: \(var1 - var2)")
-    case "*":
+    case "*", "mul":
         print("Result: \(var1 * var2)")
-    case "/":
+    case "/", "div":
         print("Result: \(var1 / var2)")
-    case "%":
+    case "%", "mod":
         print("Result: \(var1 % var2)")
     default:
         print("Please enter a number followed by +, -, *, /, or %, followed by another number")
+    }
+} else {
+    print(prompt2)
+    let line = input()
+    
 }
+
 
 
 
