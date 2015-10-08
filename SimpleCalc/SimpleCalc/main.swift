@@ -23,7 +23,7 @@ func input() -> String {
 func convert(incoming:String) -> Int {
     let a:Int? = Int(incoming)
     return a!
-    // return NSFormatter().numberFromString(incoming)!.integerValue
+    // return NSFormatter().numberFromString(incoming)!.integerValue   <-- I think this is for an older version of Swift
 }
 
 print("Would you like a simple calculator (1), or a multi-operand (2)?")
@@ -51,7 +51,32 @@ if userInput == 1 {
 } else {
     print(prompt2)
     let line = input()
-    
+    let inputArr = line.characters.split{$0 == " "}.map(String.init)
+    var numArr = [Int](count: inputArr.count-1, repeatedValue: 0)
+    for var i = 0; i < inputArr.count - 1; i++ {
+        numArr[i] = convert(inputArr[i])
+    }
+    var function = inputArr[inputArr.count - 1]
+    switch function {
+        case "count":
+            print("Count of inputs is \(numArr.count).")
+        case "avg":
+            var sum = 0
+            for var i = 0; i < numArr.count; i++ {
+                sum += numArr[i]
+            }
+            var avg = sum / numArr.count
+            print("Average of inputs is \(avg).")
+        case "fact":
+            let num = numArr[0]
+            var fact = 1
+            for var i = 1; i <= num; i++ {
+                fact *= i
+            }
+            print("Factorial of \(num) is \(fact).")
+        default:
+            print("Please enter a series of numbers separated by spaces, followed by 'count', 'avg', or 'fact'")
+    }
 }
 
 
