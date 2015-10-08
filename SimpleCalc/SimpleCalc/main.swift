@@ -26,6 +26,7 @@ func convert(incoming:String) -> Int {
 let prompt = "Enter an expression separated by returns, or a single-line multi-operand expression separated by spaces:"
 var keepGoing = true;
 
+// Run the calculator loop
 repeat {
     print(prompt)
     let line = input()
@@ -80,6 +81,7 @@ repeat {
                 print("Please enter a series of numbers separated by spaces, followed by 'count', 'avg', or 'fact'")
         }
     }
+    
     print("Would you like to calculate again? 'y' for yes, 'n' for no")
     var response = input()
     if response == "y" {
