@@ -68,12 +68,16 @@ if userInput == 1 {
             var avg = sum / numArr.count
             print("Average of inputs is \(avg).")
         case "fact":
-            let num = numArr[0]
-            var fact = 1
-            for var i = 1; i <= num; i++ {
-                fact *= i
+            if numArr.count > 1 {
+                print("Must enter only one number for a factorial calculation.")
+            } else {
+                let num = numArr[0]
+                var fact = 1
+                for var i = 1; i <= num; i++ {
+                    fact *= i
+                }
+                print("Factorial of \(num) is \(fact).")
             }
-            print("Factorial of \(num) is \(fact).")
         default:
             print("Please enter a series of numbers separated by spaces, followed by 'count', 'avg', or 'fact'")
     }
